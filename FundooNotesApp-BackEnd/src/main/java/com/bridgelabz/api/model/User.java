@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -49,7 +50,8 @@ public @Data class User {
 	@Column(name = "verification")
 	private boolean verify;
 	
-	@Column(name="profile")
+	@Lob
+	@Column(columnDefinition = "MEDIUMBLOB")
 	private String profilepic;
 	
 	public User(UserDTO userDTO ) {

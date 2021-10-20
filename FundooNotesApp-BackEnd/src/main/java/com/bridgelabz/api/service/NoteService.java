@@ -1,6 +1,7 @@
 package com.bridgelabz.api.service;
 
 import java.time.LocalDateTime;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,6 +69,10 @@ public class NoteService implements INote {
 		
 		if(user.isPresent()) {
 			List<Note> notes = noteRepo.findAllByUser(userId);
+//			System.out.println("note "+ notes);
+			notes.stream().forEach(i -> i.setImage(Base64.getDecoder().decode(i.getImage()).toString()));
+			
+			System.out.println("note "+ notes);
 			return new ResponseDTO(200, "getAllNoteByUser call success ", notes);
 		}
 		return new ResponseDTO(200, "getAllNoteByUser call Failed user not present ", null);

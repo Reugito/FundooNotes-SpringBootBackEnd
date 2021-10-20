@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -58,8 +59,16 @@ public @Data class Note {
 	@Column(name="color")
 	private String color;
 	
+	@Lob
+	@Column(columnDefinition = "MEDIUMBLOB")
+	private String image;
+	
+	private byte[] picByte;
+	
 	@Column(name="reminder")
 	private LocalDateTime remindertime;
+	
+	private boolean hover = false;
 
 	@JsonIgnoreProperties(value = "notes")
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -74,6 +83,8 @@ public @Data class Note {
 		this.title = noteDTO.title;
 		this.description = noteDTO.description;
 		this.registerDate = noteDTO.registerDate;
+		this.image = noteDTO.image;
+		this.hover = false;
 		this.trash = false;
 		this.isArchieve = false;
 		this.pin = false;

@@ -17,6 +17,8 @@ public class NoteDTO {
 
 	public String color;
 	
+	public String image;
+	
 	public LocalDateTime registerDate = LocalDateTime.now();
 	
 	public boolean isPin;

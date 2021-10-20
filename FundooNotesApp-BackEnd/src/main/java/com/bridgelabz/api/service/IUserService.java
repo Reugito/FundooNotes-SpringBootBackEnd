@@ -1,7 +1,10 @@
 package com.bridgelabz.api.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bridgelabz.api.dto.UserDTO;
 import com.bridgelabz.api.model.User;
@@ -15,7 +18,9 @@ public interface IUserService {
 	
 	Optional<User> getUserById(Long userId);
 	
-	ResponseDTO addUser(UserDTO userDTO);
+	String getUserById1(String token);
+	
+	ResponseDTO addUser(UserDTO userDTO) throws IOException;
 	
 	ResponseDTO login(String email);
 	
